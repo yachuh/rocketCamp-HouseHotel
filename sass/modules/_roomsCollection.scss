@@ -1,0 +1,47 @@
+.rooms {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #000000;
+
+    a {
+        display: block;
+        width: 275px;
+        height: 275px;
+        text-decoration: none;
+        text-align: center;
+        line-height: 275px;
+        font-size: 0px;
+        &:hover {
+            box-shadow: inset 0 0 0 1000px rgba($color-primary,.6);
+            transition: all .3s;
+            font-size: 19px;
+        }
+    }
+}
+
+// rooms background
+.single-room {
+    background: url('../../img/house/collections/single.png') center ;
+    background-size: 100%;
+}
+.double-room {
+    background: url('../../img/house/collections/double.png') center;
+    background-size: 100%;
+}
+.twin-room {
+    background: url('../../img/house/collections/twin.png') center ;
+    background-size: 100%;
+}
+.deluxeSingle-room {
+    background: url('../../img/house/collections/deluxe-single.png') center ;
+    background-size: 100%;
+}
+.deluxeDouble-room {
+    background: url('../../img/house/collections/deluxe-double.png') center ;
+    background-size: 100%;
+}
+.deluxeTwin-room {
+    background: url('../../img/house/collections/deluxe-twin.png') center ;
+    background-size: 100%;
+}

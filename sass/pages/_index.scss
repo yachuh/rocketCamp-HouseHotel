@@ -1,0 +1,92 @@
+.indexPage {
+    background: url('../../img/house/home_bg_image1.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    background-attachment: fixed;
+    color: $white;
+    margin: 0 auto;
+    padding: 0px 128px;
+
+    .indexPageLayer{
+        background: rgba($color: #000000, $alpha: .6);
+        height: 100vh;
+    }
+}
+
+
+.main {
+    max-width: 1110px;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-bottom: 48px;
+
+    a {
+        color: $white;
+    }
+}
+
+
+// header
+.header {
+    padding-top: 120px;
+    flex-direction: column;
+}
+
+.logo {
+    width: 142.55px;
+    margin-bottom: 185px;
+}
+
+.info {
+    font-size: $font-size-sm;
+    font-weight: 300;
+
+    h1 {
+        font-weight:400;
+        margin-bottom: 16px;
+    }
+
+    p {
+        margin-bottom: 6px;
+    }
+    a {
+        text-decoration: none;
+    }
+}
+
+// rooms
+.rooms {
+    margin-top: 109px;
+    width: 825px;
+}
+
+
+// footer
+.footer {
+    max-width: 1110px;
+    margin: 0 auto;
+    justify-content: space-between;
+    font-size: $font-size-sm;
+    font-weight: 100;
+    color: $white;
+
+    p {
+        font-weight: 300;
+        margin-left: auto;
+    }
+}
+
+.dot{
+    height: 12px;
+    width: 12px;
+    border: $white 1px solid;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 5.5px;
+}
+
+.active {
+    background-color: $white;
+}
+

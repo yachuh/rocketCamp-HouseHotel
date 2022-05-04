@@ -1,0 +1,15 @@
+@import "reset";
+@import "variables";
+@import "base";
+@import "mixin";
+// @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@200..900&family=Noto+Sans+TC:wght@200..900&display=swap');
+
+
+// Modules
+@import "./modules/slider";
+@import "./modules/roomsCollection";
+@import "./modules/modal";
+
+//Pages
+@import "./pages/index";
+@import "./pages/room";

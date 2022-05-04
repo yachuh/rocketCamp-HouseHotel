@@ -1,0 +1,29 @@
+body {
+    font-family: 'Noto Sans TC','Open Sans',sans-serif;
+    font-size: $base-font-size;
+    color: $color-primary;
+}
+
+.flex {
+    display: flex;
+}
+
+//img
+img {
+    width: 100%;
+    height: auto;
+    // vertical-align: middle;
+}
+
+// link
+a {
+    text-decoration: none;
+}
+
+.d-n {
+    display: none;
+}
+
+.txtInfo {
+    font-size: $font-size-sm;
+}
