@@ -1,12 +1,11 @@
 .indexPage {
-    background: url('../../img/house/home_bg_image1.jpeg');
+    background: url('../img/house/home_bg_image1.jpeg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
     background-attachment: fixed;
     color: $white;
     margin: 0 auto;
-    padding: 0px 128px;
 
     .indexPageLayer{
         background: rgba($color: #000000, $alpha: .6);

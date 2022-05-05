@@ -138,32 +138,32 @@ a {
 }
 
 .single-room {
-  background: url("../../img/house/collections/single.png") center;
+  background: url("../img/house/collections/single.png") center;
   background-size: 100%;
 }
 
 .double-room {
-  background: url("../../img/house/collections/double.png") center;
+  background: url("../img/house/collections/double.png") center;
   background-size: 100%;
 }
 
 .twin-room {
-  background: url("../../img/house/collections/twin.png") center;
+  background: url("../img/house/collections/twin.png") center;
   background-size: 100%;
 }
 
 .deluxeSingle-room {
-  background: url("../../img/house/collections/deluxe-single.png") center;
+  background: url("../img/house/collections/deluxe-single.png") center;
   background-size: 100%;
 }
 
 .deluxeDouble-room {
-  background: url("../../img/house/collections/deluxe-double.png") center;
+  background: url("../img/house/collections/deluxe-double.png") center;
   background-size: 100%;
 }
 
 .deluxeTwin-room {
-  background: url("../../img/house/collections/deluxe-twin.png") center;
+  background: url("../img/house/collections/deluxe-twin.png") center;
   background-size: 100%;
 }
 
@@ -291,14 +291,13 @@ a {
 }
 
 .indexPage {
-  background: url("../../img/house/home_bg_image1.jpeg");
+  background: url("../img/house/home_bg_image1.jpeg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
   background-attachment: fixed;
   color: #ffffff;
   margin: 0 auto;
-  padding: 0px 128px;
 }
 
 .indexPage .indexPageLayer {
@@ -392,7 +391,7 @@ a {
 }
 
 .roomSidebar {
-  background: url(../../img/room1/photo-1551776235-dde6d482980b.jpeg) no-repeat;
+  background: url(../img/room1/photo-1551776235-dde6d482980b.jpeg) no-repeat;
   background-size: cover;
   width: 42%;
   height: 100%;
