@@ -4,6 +4,13 @@
     width: $size;
     color: $color;
     background-color: $bgcolor;
+    text-align: center;
+    transition: all .2s ease-in-out;
+    line-height: 44px; 
+
+    &:hover{
+        transform: scale(1.1);
+    }
 };
 
 // linear gradient

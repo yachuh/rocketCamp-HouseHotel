@@ -82,29 +82,34 @@ async function getRoomData(){
 
     function applyRoomInfo () {
         const { id,name,imageUrl,normalDayPrice,holidayPrice,descriptionShort,description,checkInAndOut,amenities,} = room;
-
+        document.querySelector('head title').innerHTML = name;
         const roomTitle = document.querySelector('.room-head h1');
         const roomDescriptionShort = document.querySelector('.room-descriptionShort');
         const roomRule = document.querySelector('.room-rule');
         const roomDescription = document.querySelector('.room-description');
 
+        //標題
         roomTitle.innerHTML = name;
-        roomDescriptionShort.innerHTML = "1人・ 單人床・ 附早餐・衛浴1間・18平方公尺～";
+        //簡介
+        roomDescriptionShort.innerHTML = `${descriptionShort.GuestMax} 人・床：${descriptionShort.Bed[0]}・附早餐・衛浴 ${descriptionShort["Private-Bath"]} 間・${descriptionShort.Footage} 平方公尺`;
+        //價格＆時間
         roomRule.innerHTML = `
             <p>平日（一～四）價格：${normalDayPrice} / 假日（五〜日）價格：${holidayPrice}</p>
             <p>入住時間：${checkInAndOut.checkInEarly}（最早）/ ${checkInAndOut.checkInLate}（最晚）</p>
             <p>退房時間：${checkInAndOut.checkOut}</p>
         `;
+        //介紹
         const descriptionStrArray = description.split('.').map(element => element.trim())
         descriptionStrArray.forEach( str => {
             if(str !== ""){
                 roomDescription.innerHTML += `<li>${str}</li>`
             }
         });
-
         // 設備
-        let list ="";
+        let list = "";
+        let modalList = "";
         const roomAmenities = document.querySelector(".room-amenities");
+        const modalRoomAmenities = document.querySelector(".modal-roomInfo .roomDesc .room-amenities");
         Object.entries(amenities).forEach(item => {
             const [key,value] = item;
             let amenityName = "";
@@ -123,6 +128,12 @@ async function getRoomData(){
                                     </div>
                                     <p>${amenityName}</p>
                                 </li>`
+                        modalList+=`<li class="amenity">
+                                        <div class="amenityImgArea">
+                                            <img src=${amenityImg} alt=${key}>
+                                        </div>
+                                        <p>${amenityName}</p>
+                                    </li>`
                     } else {
                         list+=`<li class="amenity flex inactive">
                                     <div class="amenityImgArea flex">
@@ -136,6 +147,12 @@ async function getRoomData(){
             })
         })
         roomAmenities.innerHTML = list;
+        modalRoomAmenities.innerHTML = modalList;
+
+        //modal
+        document.querySelector(".modal-roomInfo .roomTitle h2").innerHTML = name;
+        document.querySelector(".modal-roomInfo .roomDesc p").innerHTML = `${descriptionShort.GuestMax} 人・床：${descriptionShort.Bed[0]}・附早餐・衛浴 ${descriptionShort["Private-Bath"]} 間・${descriptionShort.Footage} 平方公尺<br><span>平日（一～四）價格：${normalDayPrice} / 假日（五〜日）價格：${holidayPrice}</span>`
+        document.querySelector(".roomRule ul li").innerHTML = `入住時間：最早 ${checkInAndOut.checkInEarly}，最晚 ${checkInAndOut.checkInLate}；退房時間：${checkInAndOut.checkOut}，請自行確認行程安排。`
     }
     applyRoomInfo();
 }

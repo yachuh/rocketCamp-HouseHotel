@@ -1,5 +1,5 @@
 body {
-    font-family: 'Noto Sans TC','Open Sans',sans-serif;
+    font-family: 'Open Sans','Noto Sans TC',sans-serif;
     font-size: $base-font-size;
     color: $color-primary;
 }
@@ -26,4 +26,18 @@ a {
 
 .txtInfo {
     font-size: $font-size-sm;
+}
+
+// .button {
+//     text-align: center;
+//     transition: all .2s ease-in-out;
+//     line-height: 44px; 
+
+//     &:hover{
+//         transform: scale(1.1);
+//     }
+// }
+
+hr {
+    border: 0.5px solid rgba($color-secondary,0.5);
 }
