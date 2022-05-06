@@ -18,6 +18,9 @@ img {
 // link
 a {
     text-decoration: none;
+    &:visited {
+        color: inherit;
+    }
 }
 
 .d-n {

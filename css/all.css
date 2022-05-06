@@ -89,6 +89,10 @@ a {
   text-decoration: none;
 }
 
+a:visited {
+  color: inherit;
+}
+
 .d-n {
   display: none;
 }
@@ -141,34 +145,10 @@ hr {
   font-size: 19px;
 }
 
-.single-room {
-  background: url("../img/house/collections/single.png") center;
-  background-size: 100%;
-}
-
-.double-room {
-  background: url("../img/house/collections/double.png") center;
-  background-size: 100%;
-}
-
-.twin-room {
-  background: url("../img/house/collections/twin.png") center;
-  background-size: 100%;
-}
-
-.deluxeSingle-room {
-  background: url("../img/house/collections/deluxe-single.png") center;
-  background-size: 100%;
-}
-
-.deluxeDouble-room {
-  background: url("../img/house/collections/deluxe-double.png") center;
-  background-size: 100%;
-}
-
-.deluxeTwin-room {
-  background: url("../img/house/collections/deluxe-twin.png") center;
-  background-size: 100%;
+.rooms a {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
 }
 
 .modal {
@@ -422,10 +402,9 @@ hr {
   background: url("../img/house/home_bg_image1.jpeg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100%;
+  background-size: cover;
   background-attachment: fixed;
   color: #ffffff;
-  margin: 0 auto;
 }
 
 .indexPage .indexPageLayer {
@@ -438,6 +417,9 @@ hr {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0 auto;
   margin-bottom: 48px;
 }
@@ -527,6 +509,9 @@ hr {
 }
 
 .roomSidebar .btn-back {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   margin-top: 87px;
   margin-left: 128px;
   margin-bottom: 449px;

@@ -3,9 +3,9 @@ const id = "3Elqe8kfMxdZv5xFLV4OUeN6jhmxIvQSTyj4eTgIowfIRvF4rerA2Nuegzc2Rgwu";
 
 const amenityInfoArray = [
     {
-        nameBackend:"Wi-fi",
+        nameBackend:"Wi-Fi",
         nameFrontend:"Wifi",
-        imageUrl:"./img/icon/wifi.svg",
+        imageUrl:"./img/icon/Wi-Fi.svg",
     },
     {
         nameBackend:"Breakfast",
