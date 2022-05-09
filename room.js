@@ -1,5 +1,6 @@
 const apiUrl = "https://challenge.thef2e.com/api/thef2e2019/stage6";
-const id = "3Elqe8kfMxdZv5xFLV4OUeN6jhmxIvQSTyj4eTgIowfIRvF4rerA2Nuegzc2Rgwu";
+// const id = "3Elqe8kfMxdZv5xFLV4OUeN6jhmxIvQSTyj4eTgIowfIRvF4rerA2Nuegzc2Rgwu";
+let id = new URLSearchParams(document.location.search).get("id")
 
 const amenityInfoArray = [
     {

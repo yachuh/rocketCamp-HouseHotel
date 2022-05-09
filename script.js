@@ -1,6 +1,4 @@
 const apiUrl = "https://challenge.thef2e.com/api/thef2e2019/stage6";
-const id = "3Elqe8kfMxdZv5xFLV4OUeN6jhmxIvQSTyj4eTgIowfIRvF4rerA2Nuegzc2Rgwu";
-/* ---- RoomPage ----- */
 
 async function getAllRoomData(){
     
@@ -22,7 +20,7 @@ async function getAllRoomData(){
     let roomsStr = "";
     roomsArray.forEach( room => {
         // const [key, value] = room;
-        const roomInfo = `<a id=${room.id} href="/rooms/${room.id}" style="background-image: url(${room.imageUrl});">${room.name}</a>`
+        const roomInfo = `<a id=${room.id} href="/room.html?id=${room.id}" style="background-image: url(${room.imageUrl});">${room.name}</a>`
         roomsStr += roomInfo;
     })
     rooms.innerHTML = roomsStr;
