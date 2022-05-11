@@ -10,27 +10,27 @@
     position: fixed;
     top:0;
     left:0;
-
 }
 
 .modal-container {
     margin: 0 auto;
-    margin-top: 84px;
-    background-color: $white;
     width: 80%;
     max-width: 100%;
     border: 1px solid $color-primary;
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     position: relative;
-    // box-sizing: border-box;
 
-    .btn-cancel {
+    a.btn-cancel {
         width: 13px;
         position:absolute;
         top: 4%;
         right: 2%;
     }
+}
 
+#modalBook .modal-container {
+    margin-top: 84px;
+    background-color: $white;
 }
 
 .modal-booking {
@@ -57,7 +57,7 @@
                 color: #6A6A6A;
             }
         }
-        p:last-child {
+        p.totalDays {
             color: $color-secondary;
         }
     }
@@ -79,7 +79,7 @@
             line-height: 36px;
         }
     }
-    .btn-send {
+    .btn-submit {
         @include button(100%,$white,$color-primary);
         border: 1px solid $white;
         font-weight: bold;
@@ -209,5 +209,47 @@
             }
 
         }
+    }
+}
+
+#modalSubmit .modal-container {
+    margin-top: 84px;
+    background-color: $color-primary;
+    color: $white;
+    text-align: center;
+    padding: 125px 321px 0px;
+
+    .btn-cancel {
+        color: $white;
+    }
+
+    .bookConfirmImg {
+        margin: 0 auto;
+        width: 124.42px;
+        position: relative;
+
+        img:nth-child(1){
+            width: 100%;
+        }
+
+        img:nth-child(2){
+            position: absolute;
+            width: 50%;
+            top: 68.9px;
+            left: 43.93px;
+        }
+    }
+
+    h2 {
+        font-size: 50px;
+        font-weight:500;
+        margin: 41px auto;
+    }
+
+    p {
+        font-size: 18px;
+        font-weight:300;
+        line-height: 30px;
+        margin-bottom: 104px;
     }
 }

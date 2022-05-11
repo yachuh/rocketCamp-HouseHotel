@@ -129,33 +129,33 @@
             </div>
         </div>
     </div>
-    <!-- The Booking Modal -->
-    <div class="modal" id="modal-booking" style="display: none">
+    <!-- The Booking Modal Start-->
+    <div class="modal" id="modalBook" style="display:none">
         <div class="modal-container flex">
             <a class="btn-cancel" href=""><img src="./img/icon/cancel.svg" alt="cancel"></a>
             <div class="modal-booking">
                 <div class="bookingForm">
                     <p>姓名</p>
                     <label for="">
-                        <input type="text">
+                        <input type="text" class="name">
                     </label>
                     <p>手機號碼</p>
                     <label for="">
-                        <input type="tel">
+                        <input type="tel" class="tel">
                     </label>
                     <p>入住日期</p>
                     <label for="">
-                        <input type="date">
+                        <input type="date" class="checkinDate">
                     </label>
                     <p>退房日期</p>
                     <label for="">
-                        <input type="date">
+                        <input type="date"  class="checkoutDate">
                     </label>
-                    <p>2天，1晚平日</p>
+                    <p class="totalDays"></p>
                 </div>
                 <hr>
                 <p class="txtTotal">總計<br><span>$1,380</span></p>
-                <a class="btn-send" href="#">確認送出</a>
+                <a class="btn-submit" href="#">確認送出</a>
                 <p class="txtInfo">此預約系統僅預約功能，並不會對您進行收費</p>
             </div>
             <div class="modal-roomInfo">
@@ -217,6 +217,20 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="room.js"></script>
+    <!-- The Booking Modal End-->
+    <!-- The Booking Submit Modal Start-->
+    <div class="modal" id="modalSubmit" style="display:none">
+        <div class="modal-container">
+            <a class="btn-cancel" href=""><img src="./img/icon/cancel.svg" alt="cancel"></a>
+            <div class="bookConfirmImg">
+                <img src="./img/icon/bookConfirmImg.svg" alt="">
+                <img src="./img/icon/check.svg" alt="">
+            </div>
+            <h2>預約成功</h2>
+            <p>請留意簡訊發送訂房通知，入住當日務必出示此訂房通知， 若未收到簡訊請來電確認，謝謝您</p>
+        </div>
+    </div>
+    <!-- The Booking Submit Modal End-->
+    <script type="text/javascript" src="./js/room.js"></script>
 </body>
 </html>

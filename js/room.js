@@ -1,6 +1,6 @@
 const apiUrl = "https://challenge.thef2e.com/api/thef2e2019/stage6";
-// const id = "3Elqe8kfMxdZv5xFLV4OUeN6jhmxIvQSTyj4eTgIowfIRvF4rerA2Nuegzc2Rgwu";
-let id = new URLSearchParams(document.location.search).get("id")
+const apiToken = "Bearer zTycuFEM5JKdoE8WXAapLqSksc7KFlTkzWPqNK6BmNrxytYsrMUWZ2LATbqS";
+let id = new URLSearchParams(document.location.search).get("id");
 
 const amenityInfoArray = [
     {
@@ -69,7 +69,7 @@ async function getRoomData(){
     
     var myHeaders = new Headers();
     // myHeaders.append("", "");
-    myHeaders.append("Authorization", "Bearer zTycuFEM5JKdoE8WXAapLqSksc7KFlTkzWPqNK6BmNrxytYsrMUWZ2LATbqS");
+    myHeaders.append("Authorization", apiToken);
 
     var requestOptions = {
     method: 'GET',
@@ -80,7 +80,7 @@ async function getRoomData(){
     const response = await fetch(`${apiUrl}/room/${id}`, requestOptions);
     const result = await response.json();
     const room = result.room[0];
-
+    
     function applyRoomInfo () {
         const { id,name,imageUrl,normalDayPrice,holidayPrice,descriptionShort,description,checkInAndOut,amenities,} = room;
         document.querySelector('head title').innerHTML = name;
@@ -156,28 +156,154 @@ async function getRoomData(){
         document.querySelector(".roomRule ul li").innerHTML = `入住時間：最早 ${checkInAndOut.checkInEarly}，最晚 ${checkInAndOut.checkInLate}；退房時間：${checkInAndOut.checkOut}，請自行確認行程安排。`
     }
     applyRoomInfo();
+
+    let roomData = room;
+    return roomData;
 }
 
 getRoomData();
-
+let roomData = getRoomData();
 
 // Booking Modal
 const btnBook = document.querySelector('.btn-book');
 btnBook.addEventListener("click", openModal);
 
-const modal = document.querySelector('.modal');
+const modalBook = document.querySelector('#modalBook');
 function openModal () {
-    modal.removeAttribute("style")
+    modalBook.removeAttribute("style");
 }
 
 window.onclick = function(event) {
-    if (event.target === modal) {
+    if (event.target === modalBook) {
         // modal.classList.toggle("d-n");
-      modal.style.display = "none";
+        modalBook.style.display = "none";
+    } else if (event.target === modalSubmit) {
+        modalSubmit.style.display = "none";
     }
   }
 
+const btnSubmit = document.querySelector('.btn-submit');
+const modalSubmit = document.querySelector('#modalSubmit');
+btnSubmit.addEventListener("click", book)
+
 const btnCancel = document.querySelector('.btn-cancel');
 btnCancel.addEventListener("click",()=> {
-    modal.style.display = "none";;
+    modalBook.style.display = "none";
+    modalSubmit.style.display = "none";
 })
+
+// date picker
+
+function days_between(date1, date2) {
+
+    // The number of milliseconds in one day
+    const ONE_DAY = 1000 * 60 * 60 * 24;
+
+    // Calculate the difference in milliseconds
+    const differenceMs = Math.abs(date1 - date2);
+
+    // Convert back to days and return
+    return Math.round(differenceMs / ONE_DAY);
+
+}
+function formatDate (date) {
+    var day = date.getDate();
+    if (day < 10) {
+        day = "0" + day;
+    }
+    var month = date.getMonth() + 1;
+    if (month < 10) {
+        month = "0" + month;
+    }
+    var year = date.getFullYear();
+    return year + "-" + month + "-" + day;
+}
+function getDates (startDate, endDate) {
+    const dates = []
+    let currentDate = startDate
+    const addDays = function (days) {
+      const date = new Date(this.valueOf())
+      date.setDate(date.getDate() + days)
+      return date
+    }
+    while (currentDate < endDate) {
+      dates.push(currentDate)
+      currentDate = addDays.call(currentDate, 1)
+    }
+    return dates
+};
+
+const inputCheckin = document.querySelector('.bookingForm .checkinDate');
+const inputCheckout = document.querySelector('.bookingForm .checkoutDate');
+const totalDays = document.querySelector('.totalDays');
+const txtTotalPrice = document.querySelector('.txtTotal span');
+
+inputCheckin.addEventListener('input',getTotalDays);
+inputCheckout.addEventListener('input',getTotalDays);
+
+function getTotalDays(){
+    const checkinDate = new Date(document.querySelector('.bookingForm .checkinDate').value);
+    const checkoutDate = new Date(document.querySelector('.bookingForm .checkoutDate').value);
+    const dateRange = days_between(checkinDate,checkoutDate);
+    const datesArray = getDates(checkinDate,checkoutDate);
+    let weekdayCount = 0;
+    let weekendCount = 0;
+    datesArray.forEach(day => {
+        let dayOfWeek = day.getDay(); // 6 = Saturday, 0 = Sunday
+        if (dayOfWeek === 5 || dayOfWeek === 6 || dayOfWeek  === 0) {
+            weekendCount += 1
+        } else {
+            weekdayCount +=1;
+        }
+    })
+
+    totalDays.innerHTML = `${dateRange} 天，${weekdayCount} 晚平日，${weekendCount} 晚假日`
+    txtTotalPrice.innerHTML = ``
+}
+
+// 預約房型
+async function book () {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", apiToken);
+    myHeaders.append("Content-Type", "application/json");
+
+    const name = document.querySelector('.bookingForm .name').value;
+    const tel = document.querySelector('.bookingForm .tel').value;
+    const checkinDate = new Date(document.querySelector('.bookingForm .checkinDate').value);
+    const checkoutDate = new Date(document.querySelector('.bookingForm .checkoutDate').value);
+    const dateRange = days_between(checkinDate,checkoutDate);
+    const datesArray = getDates(checkinDate,checkoutDate);
+    const formattedDatesArray = function (){
+        let dates = [];
+        datesArray.forEach( date => {
+        dates.push(formatDate(date));
+        })
+        return dates;
+    };
+
+    console.log(name, tel, checkinDate, checkoutDate);
+
+    var raw = JSON.stringify({
+        "name": name,
+        "tel": tel,
+        "date": formattedDatesArray()
+    });
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+
+    const response = await fetch(`${apiUrl}/room/${id}`,requestOptions);
+    const result = await response.json();
+    if (result.success === true){
+        console.log('預約成功');
+        modalBook.style.display = "none";
+        modalSubmit.removeAttribute("style");
+    } else {
+        alert(`預約失敗：${result.message}`);
+    }
+
+}
