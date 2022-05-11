@@ -20,7 +20,7 @@ async function getAllRoomData(){
     let roomsStr = "";
     roomsArray.forEach( room => {
         // const [key, value] = room;
-        const roomInfo = `<a id=${room.id} href="/room.html?id=${room.id}" style="background-image: url(${room.imageUrl});">${room.name}</a>`
+        const roomInfo = `<a id=${room.id} href="room.html?id=${room.id}" style="background-image: url(${room.imageUrl});">${room.name}</a>`
         roomsStr += roomInfo;
     })
     rooms.innerHTML = roomsStr;
